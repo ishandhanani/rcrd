@@ -7,7 +7,6 @@ rcrd is a tool that records your shell sessions, capturing both input and output
 - Records shell input and output to timestamped log files
 - Custom naming for log files
 - Visual indicator (red dot and prompt) when recording is active
-- Custom ":exit" command to end recording session
 
 ## Installation
 
@@ -20,6 +19,22 @@ rcrd is a tool that records your shell sessions, capturing both input and output
 3. Build the project using the Makefile:
    ```
    make build
+   ```
+4. (Optional) - Edit styling in your ~/.zshrc
+
+   ```
+   # Function to set prompt color based on RCRD status
+      rcrd_prompt_color() {
+      if [[ -n "$RCRD_ACTIVE" ]]; then
+         echo "%{$fg[red]%}"
+      else
+         echo "%{$fg[green]%}"
+      fi
+      }
+
+   # Modify your prompt to include the RCRD indicator and change color
+   PROMPT='$(rcrd_prompt_color)%n%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$(git_prompt_info)%(!.#.$)'
+   RPROMPT='%{$fg[red]%}$(rcrd_active)%{$reset_color%}$(git_prompt_status)%{$reset_color%}'
    ```
 
 ## Usage
@@ -35,7 +50,9 @@ To start a recording session with a custom name:
 ```
 ./rcrd -n mysession
 ```
+
 or
+
 ```
 ./rcrd --name mysession
 ```
@@ -43,9 +60,9 @@ or
 This will create a log file named "mysession.txt" in the ~/.rcrd directory.
 
 While in a recording session:
+
 - Your prompt will turn red to indicate active recording.
 - A red dot will appear at the end of your prompt.
-- Use ":exit" to end the recording session (instead of the standard "exit" command).
 
 ## Makefile Commands
 
@@ -57,6 +74,7 @@ The project includes a Makefile for common tasks:
 - `make run`: Builds and then runs the rcrd program.
 
 Example:
+
 ```
 make build
 make install
@@ -73,6 +91,7 @@ Logs are stored in the ~/.rcrd directory. Each log file is named with a timestam
 ## Troubleshooting
 
 If you encounter any issues:
+
 1. Ensure your Go installation is up to date.
 2. Check that your .zshrc file is correctly configured.
 3. Make sure you have write permissions for the ~/.rcrd directory.

@@ -6,7 +6,7 @@ rcrd is a tool that records your shell sessions, capturing both input and output
 
 - Records shell input and output to timestamped log files
 - Custom naming for log files
-- Visual indicator (red dot and prompt) when recording is active
+- Visual indicator (red dot) when recording is active
 
 ## Installation
 
@@ -61,7 +61,6 @@ This will create a log file named "mysession.txt" in the ~/.rcrd directory.
 
 While in a recording session:
 
-- Your prompt will turn red to indicate active recording.
 - A red dot will appear at the end of your prompt.
 
 ## Makefile Commands

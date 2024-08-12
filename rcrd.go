@@ -39,7 +39,7 @@ func main() {
 	cmd := exec.Command(shell, "-l") // "-l" starts a login shell
 	cmd.Env = append(os.Environ(), "RCRD_ACTIVE=1")
 
-	// Set the user's home as the working directory
+	// TODO: should this be a flag?
 	cmd.Dir = homeDir
 
 	// Set up pseudo-terminal
@@ -50,7 +50,7 @@ func main() {
 	}
 	defer ptmx.Close()
 
-	// Create log file for this session
+	// TODO: include an ollama call at the end to add tags/metadata to recording
 	var logFileName string
 	if fileName != "" {
 		logFileName = fileName + ".txt"

@@ -39,22 +39,22 @@ rcrd is a tool that records your shell sessions, capturing both input and output
 
 ## Usage
 
-To start a recording session:
+After installation, you can start a recording session by running:
 
 ```
-./rcrd
+rcrd
 ```
 
 To start a recording session with a custom name:
 
 ```
-./rcrd -n mysession
+rcrd -n mysession
 ```
 
 or
 
 ```
-./rcrd --name mysession
+rcrd --name mysession
 ```
 
 This will create a log file named "mysession.txt" in the ~/.rcrd directory.
